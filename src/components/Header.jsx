@@ -5,14 +5,18 @@ const Header = () => {
     const [password,setPassword] =useState('')
     const [isPasswordVisible,setIsPasswordVisible]=useState(null)
     useEffect(()=>{
-        alert('Welcome to Facebook')
+        alert('Welcome to Facebook ')
     },[]) //show when page loads
     return (
         <main>
         
      <div id='main'>
           <div id='aside'>
-          <p style={{fontSize:"22px",color:"blue"}}>Hello User,</p>
+          
+          <p></p>
+              <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="facebook" />
+              <p className='connect'>Facebook helps you connect and <br />share with the people in your life.</p>
+              <p style={{fontSize:"22px",color:"blue"}}>Hello User,</p>
           <p>Your Email Address is: {email}</p>
           <p style={{
   color: isPasswordVisible ? 'green' : 'red', // Change color based on visibility
@@ -24,9 +28,6 @@ fontSize:"18px",
   {`Your password is ${isPasswordVisible ? password : "not visible"}`}
 </p>
 
-          <p></p>
-              <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="facebook" />
-              <p className='connect'>Facebook helps you connect and <br />share with the people in your life.</p>
           </div>
          <div>
          <div id='form'>
