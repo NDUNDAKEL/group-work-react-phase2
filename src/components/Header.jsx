@@ -1,12 +1,42 @@
 import React, { useEffect, useState } from "react";
 
 const Header = () => {
-    const [email,setEmail] =useState('')
+    const [users,setUsers]=useState({
+
+        name:"admin",
+         password:"1234"
+    })
+    const [name,setName] =useState('')
     const [password,setPassword] =useState('')
     const [isPasswordVisible,setIsPasswordVisible]=useState(null)
+    const [message,setMessage]=useState({
+        success:'',
+        error:''
+    })
     useEffect(()=>{
         alert('Welcome to Facebook ')
+        setName('')
+        setPassword('')
     },[]) //show when page loads
+const login=()=>{
+      if(name !== users.name && password !== users.password){
+setMessage({
+    success:"",
+    error:"Inavlid Credentials"
+})
+
+setName('')
+setPassword('')
+    }else{
+        setMessage({
+            success:"Successfull Login",
+            error:""
+        })
+        setName('')
+        setPassword('')
+    }
+}
+  
     return (
         <main>
         
@@ -15,23 +45,13 @@ const Header = () => {
           
           <p></p>
               <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="facebook" />
-              <p className='connect'>Facebook helps you connect and <br />share with the people in your life.</p>
-              <p style={{fontSize:"22px",color:"blue"}}>Hello User,</p>
-          <p>Your Email Address is: {email}</p>
-          <p style={{
-  color: isPasswordVisible ? 'green' : 'red', // Change color based on visibility
-fontSize:"18px",
-  fontWeight: '500',
-  marginTop: '8px',
-  lineHeight: '1.5',
-}}>
-  {`Your password is ${isPasswordVisible ? password : "not visible"}`}
-</p>
+   
+        
 
           </div>
          <div>
          <div id='form'>
-                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Email address or Phone number'/>
+                <input type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder='name address'/>
 
                 <input type={isPasswordVisible ? 'text' :'password'} value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
         
@@ -43,10 +63,12 @@ fontSize:"18px",
   Show Password
      
 
-
-              <button className='login'>Log in</button>
+  <p style={{color:"green"}}>{message.success }</p>
+  <p style={{color:'red'}}>{message.error }</p>
+              <button className='login' onClick={login}>Log in</button>
                 <a href="#">Forgotten Password?</a>
                 <div className='below'>
+             
                 <button className='newAcc'>Create New Account</button>
                 </div>
           </div>
